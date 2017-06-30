@@ -1,0 +1,11 @@
+{
+    "env": {
+        "browser": true,
+        "amd":     true
+    },
+    "extends": "./node_modules/intapps-coding-style/.eslintrc",
+    "globals": {
+        "angular":      true,
+        "__moduleName": true
+    }
+}
