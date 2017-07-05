@@ -1,0 +1,41 @@
+/* Please Note: There is a directive called sps-pagination-footer with styles that makes these obsolete */
+
+.pagination {
+	font-weight: 400 !important;
+	height: 28px;
+	line-height: 28px;
+	margin-bottom: 0;
+	
+	.fa {
+		font-weight: 600;
+	}
+	
+	.inline-list, select, input {
+		margin: 0;
+	}
+	
+	a {
+		border-bottom: none;
+	}
+	
+	input[type="text"] {
+		height: 28px;
+		width: 44px;
+		text-align: center;
+	}
+
+	select {
+		height: 28px;
+		padding-right: 1.5rem;
+		width: auto;		
+	}	
+
+	div, ul, li, input, select {
+		font-size: .75rem !important;
+	}
+	
+	
+	ul li { 
+		margin-left: .25rem !important;
+	}
+}

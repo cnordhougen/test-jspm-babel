@@ -1,0 +1,60 @@
+//This overrides default .f-dropdown foundation styles
+
+.f-dropdown {
+  margin-top: -1px;
+  border-top-color: #ffffff;
+  
+  &:before {
+    display: none;
+  }
+  &:after {
+    display: none;
+  }
+  border-radius: $global-radius;
+  &.tiny {
+    max-width: rem-calc(150);
+  }
+  &.small {
+    max-width: rem-calc(150);
+  }
+  &.medium {
+    max-width: rem-calc(300);
+  }
+  &.large {
+    max-width: rem-calc(600);
+  }
+
+  & li a {
+    display: block;
+    font-weight: $book;
+    border: 0;
+    &:hover {
+      background-color: rgba(96, 106, 110, 0.075);
+      color: $slate-grey;
+    }
+  }
+
+  & li label {
+    padding: rem-calc(1);
+  }
+
+  &.content-box {
+    padding: rem-calc(1.25);
+    background-color: $white;
+    box-shadow: inset 0 0 rem-calc(4) 0 $pale-grey;
+  }
+
+  &.search-box {
+    border-radius: 0 0 3px 3px;
+    & li a {
+      padding: rem-calc(8) rem-calc(12) rem-calc(4);
+    }
+    & span {
+      font-size: rem-calc(12);
+      font-weight: $book;
+      color: $light-grey;
+    }
+  }
+}
+
+

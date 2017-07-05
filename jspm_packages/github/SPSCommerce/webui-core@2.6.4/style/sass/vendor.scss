@@ -1,0 +1,24 @@
+
+// Gulp sets the includePaths for SASS to match all of the
+// dependency folders loaded from JSPM.  So here all we have
+// to do is point to the files inside those libraries.
+
+
+// Start with a Reset
+
+@import "jspm:foundation/scss/normalize";
+
+// Load SPS style settings
+
+@import "settings";
+
+// Foundation 5.x
+
+@import "jspm:foundation/scss/foundation";
+@import "vendor/foundation/sps-foundation";
+@import "vendor/foundation/animations";
+
+// Font Awesome (files from our cloudfront CDN)
+
+$fa-font-path: "https://assets.hosted-commerce.net/framework/fonts";
+@import "jspm:font-awesome/scss/font-awesome";

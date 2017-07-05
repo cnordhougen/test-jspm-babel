@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Token Module</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style>[ng-cloak] {
+        visibility: hidden;
+    }</style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./token.example').then(function (app) {
+            angular.bootstrap(document, [app.name]);
+        });
+    </script>
+</head>
+<body ng-controller="AppController as ctrl">
+<spsui-application class="centered">
+    <spsui-viewport>
+        <div class="columns">
+            <div ng-cloak>
+                <h1>Token Module Example</h1>
+                <p>Captured Token: {{ctrl.token}}{{ctrl.error}}</p>
+
+                <h2>Authorization Header Injection</h2>
+
+                <button ng-click="ctrl.requestTest1()">Test GET Request (use global setting: {{ctrl.global}})</button>
+                <span class="green" ng-if="ctrl.test1.tested && ctrl.test1.attached">{{ctrl.msg.attached}}</span>
+                <span class="error-color" ng-if="ctrl.test1.tested && !ctrl.test1.attached">{{ctrl.msg.missing}}</span>
+
+                <br><br>
+
+                <button ng-click="ctrl.requestTest2()">Test GET Request (always enabled)</button>
+                <span class="green" ng-if="ctrl.test2.tested && ctrl.test2.attached">{{ctrl.msg.attached}}</span>
+                <span class="error-color" ng-if="ctrl.test2.tested && !ctrl.test2.attached">{{ctrl.msg.missing}}</span>
+
+                <br><br>
+
+                <button ng-click="ctrl.requestTest3()">Test GET Request (always disabled)</button>
+                <span class="green" ng-if="ctrl.test3.tested && ctrl.test3.attached">{{ctrl.msg.attached}}</span>
+                <span class="error-color" ng-if="ctrl.test3.tested && !ctrl.test3.attached">{{ctrl.msg.missing}}</span>
+
+            </div>
+        </div>
+    </spsui-viewport>
+</spsui-application>
+</body>
+</html>

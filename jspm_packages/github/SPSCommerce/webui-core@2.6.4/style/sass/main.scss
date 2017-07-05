@@ -1,0 +1,25 @@
+@import "settings";
+
+/* Applying color to any bit of text ... used mostly to color icons */
+
+.brandblue { color: $brand-blue; }
+.deepblue { color: $deep-blue; }
+.lightblue { color: $light-blue; }
+.paleblue { color: $pale-blue; }
+.slategrey { color: $slate-grey;  }
+.mediumgrey { color: $medium-grey; }
+.lightgrey { color: $light-grey; }
+.palegrey { color: $pale-grey; }
+.grape { color: $grape; }
+.plum { color: $plum; }
+.orange { color: $orange; }
+.yellow { color: $yellow; }
+.green { color: $green; }
+.emerald { color: $emerald; }
+.mint { color: $mint; }
+.error-color { color: $error-color; }
+.paleyellow { color: $pale-yellow; }
+
+/* This removes the FOUC cloak */
+
+.spsui-fonts-loaded body {visibility: visible;}

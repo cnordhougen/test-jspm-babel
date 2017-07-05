@@ -1,0 +1,1 @@
+module.exports = require("github:SPSCommerce/webui-core@2.6.4/all.js");

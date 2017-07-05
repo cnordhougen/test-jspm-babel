@@ -1,0 +1,14 @@
+body {
+    #intercom-container {
+        .intercom-launcher {
+            // New bug, apparently it doesn't like to show
+            // itself sometimes.  Forcing visibility works.
+            visibility: visible;
+        }
+        .intercom-launcher-button {
+            border: 0;
+            background-color: #0079a5;
+        }
+    }
+}
+

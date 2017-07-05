@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+    <h1 class="left">
+        <a ng-show="pageNavCtrl.titleState"
+           ui-sref="{{::pageNavCtrl.titleState}}"
+           translate-attr-title="{{::pageNavCtrl.title}}" translate="{{pageNavCtrl.title}}"></a>
+        <span class="no-link" ng-show="!pageNavCtrl.titleState"
+           translate-attr-title="{{::pageNavCtrl.title}}" translate="{{pageNavCtrl.title}}"></span>
+    </h1>
+    <ul class="page-nav-items inline-list left"
+        ng-if="pageNavCtrl.items && pageNavCtrl.items.length > 0">
+        <li ng-repeat="item in pageNavCtrl.items"
+            ng-attr-ui-sref-active="{{::item.state ? 'active' : undefined}}">
+            <a ng-if="item.url && !item.state"
+               ng-href="{{::item.url}}"
+               translate-attr-title="{{::item.name}}" translate="{{item.name}}"></a>
+            <a ng-if="item.state && !item.url"
+               ui-sref="{{::item.state}}"
+               translate-attr-title="{{::item.name}}" translate="{{item.name}}"></a>
+            <a ng-if="item.state && item.url"
+               ng-href="{{::item.url}}"
+               ui-sref="{{::item.state}}"
+               translate-attr-title="{{::item.name}}" translate="{{item.name}}"></a>
+        </li>
+    </ul>
+    <ul class="right" ng-transclude></ul>
+</div>

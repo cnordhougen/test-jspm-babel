@@ -1,0 +1,46 @@
+@import "jspm:webui-core/style/sass/settings";
+
+// Feedback messages inherit their styles from Foundation alert boxes.
+// In the future, it may make sense to separate those styles from the
+// core Foundation overrides, and put them in here.  But for now, you
+// can find the base alert-box styles here:
+
+// https://github.com/SPSCommerce/webui-core/blob/master/core/style/sass/vendor/foundation/components/_sps-alert-boxes.scss
+
+spsui-feedback-msg {
+
+  display: block;
+
+  .feedback {
+
+    // This is to override some poor positioning
+    // logic from the foundation alert-boxes, so
+    // the text does not overlap the close icon.
+
+    padding-right: 35px;
+    .close {
+      top: 20px;
+    }
+  }
+}
+
+spsui-feedback-container {
+
+  display: block;
+
+  &.pad-top {
+    spsui-feedback-msg:first-of-type {
+      margin-top: 20px;
+    }
+  }
+
+  &.growl {
+    position: fixed;
+    min-width: 300px;
+    width: 30%;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+
+}

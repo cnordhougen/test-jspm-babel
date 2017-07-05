@@ -1,0 +1,87 @@
+.tabbed{
+	border-radius: $global-radius;
+	border-style: solid;
+	border-width: 0;
+	border-color: #D8DBDC;
+	margin-bottom: 0 !important;
+	color: #333333;
+	background-color: rgba(176, 182, 184, .15);
+	padding-top: 5px;
+    position: relative;
+
+  .tabs{
+    margin-left: 7px;
+    margin-bottom: -1px;
+    border-width: 0;
+    position: absolute;
+    top: 5px;
+    // Overflowing tabs will be hidden so they don't over lap the panel
+    overflow: hidden;
+    height: 2.65rem;
+
+    dd:first-child a, .tab-title:first-child a {
+      border-radius: 3px 0 0 0;
+      border-left: 0 solid #dddddd;
+      border-right: 0 solid #dddddd;
+      margin-left: 0;
+    }
+
+    dd:last-child a, .tab-title:last-child a {
+      border-radius: 0 3px 0 0;
+      border-right: 0 solid #dddddd;
+      margin-right: 0;
+    }
+
+    dd > a, .tab-title > a {
+      border-top: 0 solid #dddddd;
+      border-bottom: 0 solid #dddddd;
+      padding: 0.3125rem 1.25rem;
+      font-weight: 600;
+      border-right: 0 solid #dddddd;
+      transition: none;
+    }
+
+    dd.active a, .tab-title.active a {
+      background-color: white;
+      color: #1F282C;
+      border-radius: 3px 3px 0 0;
+      border-top: 1px solid #dddddd;
+      border-right: 1px solid #dddddd;
+      border-bottom: 0 solid #ffffff;
+      border-left: 1px solid #dddddd;
+      transition: none;
+    }
+
+    dd > a, .tab-title > a {
+      outline: none;
+      display: block;
+      background-color: rgba(255, 255, 255, .0);
+      color: #545d60;
+      padding: 10px 25px 5px 25px;
+      font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+      font-size: 0.75rem;
+    }
+
+    dd > a:hover, .tab-title > a:hover {
+      background-color: rgba(255, 255, 255, .0);
+      color: #1F282C;
+    }
+
+
+    dd.active > a:hover, .tab-title.active > a:hover {
+      background-color: white;
+      color: #1F282C;
+    }
+  }
+
+  .panel {
+    height: 100%;
+    border-color: #d8dbdc;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 20px;
+    background-clip: padding-box;
+    margin: 2.45rem 0 0 0;
+  }
+}

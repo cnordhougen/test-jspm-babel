@@ -1,0 +1,1 @@
+module.exports = require("github:cnordhougen/keycodes@master/index.js");

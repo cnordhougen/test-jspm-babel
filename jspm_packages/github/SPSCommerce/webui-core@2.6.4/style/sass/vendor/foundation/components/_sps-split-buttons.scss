@@ -1,0 +1,46 @@
+.split.button{
+  span{
+    border-#{$default-float}-color: darken($pale-grey, 12%);
+  }
+  &.confirm span{
+    border-#{$default-float}-color: darken($brand-blue, 5%);
+  }
+  &.key span{
+    border-#{$default-float}-color: lighten($slate-grey, 10%);
+  }
+  &.cta span{
+    border-#{$default-float}-color: darken(#EE2D24, 15%);
+  }
+  &.delete span{
+    border-#{$default-float}-color: darken($error-color, 20%);
+  }
+  &.toggle span{
+    border-#{$default-float}-color: darken($pale-grey, 10%);
+  }
+}
+
+.split.button {
+	padding-right: 4.0625rem;
+	
+	&.small { padding-right: 2.5625rem; }
+	&.tiny { padding-right: 2.0625rem; }
+	&.large { padding-right: 4.5625rem; }
+	&.xlarge { padding-right: 4.0625rem; }
+}
+
+.button.split, button.split {
+	.large span:after, small span::after, .tiny span::after, .xlarge span::after, .key span::after, .confirm span::after,{
+		font-family: FontAwesome;
+		border: none;
+		content: "\f078";
+		top: 30%;
+		left: 48%;
+	}
+
+	.key:hover span {
+		border-left-color: #2a363b;
+	}
+	.confirm:hover span{
+		border-left-color: #1385b0;
+	}
+}

@@ -1,0 +1,59 @@
+<div class="row pagination">
+    <div class="small-5 large-5 columns">
+        <ul class="inline-list">
+            <li translate="webui.components.paginationFooter.view"></li>
+            <li>
+                <label class="page-size-container">
+                    <select class="page-size" ng-model="ctrl.editablePageSize"
+                            ng-model-options="{getterSetter:true}"
+                            ng-options="o as o for o in ctrl.sizeOptions">
+                    </select>
+                </label>
+            </li>
+            <li translate="webui.components.paginationFooter.perPage"></li>
+        </ul>
+    </div>
+    <div class="small-6 large-6 columns center txt-center pagination-status">
+        <strong class="mediumgrey" ng-if="ctrl.api.state.totalItems !== -1" translate="webui.components.paginationFooter.pageOfPages"
+                                   translate-values="{ startingItem: (ctrl.api.state.startIndex + 1),
+                                                       endingItem: ctrl.api.state.endIndex,
+                                                       totalPages: ctrl.api.state.totalItems }"></strong>
+        <strong class="mediumgrey" ng-if="ctrl.api.state.totalItems === -1" translate="webui.components.paginationFooter.pageOfMany"
+                                   translate-values="{ startingItem: (ctrl.api.state.startIndex + 1),
+                                                       endingItem: ctrl.api.state.endIndex,
+                                                       totalPages: ctrl.api.state.totalItems }"></strong>
+    </div>
+    <div class="small-5 large-5 columns">
+        <ul class="inline-list right">
+            <li>
+                <p>
+                    <span class="action-button-group">
+                        <button ng-disabled="ctrl.api.state.startIndex === 0"
+                                class="pagination-prev" ng-click="ctrl.api.prevPage(false)">
+                            <i class="fa fa-angle-left fa-lg"></i>
+                        </button>
+                        <button ng-disabled="ctrl.api.state.endIndex === ctrl.api.state.totalItems"
+                                class="pagination-next" ng-click="ctrl.api.nextPage(false)">
+                            <i class="fa fa-angle-right fa-lg"></i>
+                        </button>
+                    </span>
+                </p>
+            </li>
+        </ul>
+        <ul class="inline-list right" ng-if="ctrl.api.state.totalItems !== -1">
+            <li>
+                <label>
+                    <input type="number" ng-model="ctrl.editablePageNumber"
+                           ng-model-options="{ debounce:1000, getterSetter:true }"
+                           min="1" max="{{ ctrl.api.state.totalPages }}" step="1"
+                           ng-keypress="$event.keyCode == 13 && $event.preventDefault()"/>
+                </label>
+            </li>
+            <li translate="webui.components.paginationFooter.of"></li>
+            <li>
+                <a href class="last-page-link" ng-click="ctrl.api.setPageNumber(ctrl.api.state.totalPages)">
+                    {{ ctrl.api.state.totalPages | number }}</a>
+            </li>
+        </ul>
+    </div>
+</div>

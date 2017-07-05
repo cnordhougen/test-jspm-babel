@@ -1,0 +1,138 @@
+<div class="panel secmod" ng-if="!sideBar && selected.timeline">
+
+    <label class="right large-4 small-4" ng-if="timelines">
+        <select ng-model="selected.timeline"
+                ng-options="timeline.retailer.name for timeline in timelines"
+                ></select>
+    </label>
+
+    <h5 class="cap">Program Timelines</h5>
+
+    <div class="column btnspace">
+        <div class="row">
+            <div class="small-4 large-4 columns time">
+                <h3>{{ selected.timeline.kick_off_date.display_date }}</h3>
+                <p>
+                    <small><strong>Kick Off Date</strong><br>
+                        {{ selected.timeline.kick_off_date.description }}
+                    </small>
+                </p>
+            </div>
+
+            <div class="small-4 large-4 columns time"
+                 ng-style="{'left':(selected.timeline.commitLeft+'px')}">
+                <h3>{{ selected.timeline.cert_date.display_date }}</h3>
+                <p>
+                    <small><strong>Certification Date</strong><br>
+                        {{ selected.timeline.cert_date.description }}
+                    </small>
+                </p>
+            </div>
+
+            <div class="small-4 large-4 columns hide">
+                &nbsp;
+            </div>
+        </div>
+
+        <div class="row btnspace">
+            <div class="timeline-wrap">
+                <div id="kick_off_date" class="timeline-event-node"></div>
+
+                <div id="certification_date" class="timeline-event-node"
+                     ng-style="{'left':(selected.timeline.certLeft+'px')}"></div>
+
+                <div id="todays_date" class="timeline-event-node"
+                     ng-style="{'left':(selected.timeline.todaysLeft+'px')}">
+                    <label ng-style="{'margin-top':(selected.timeline.todaysMarginTop+'px')}">TODAY</label>
+                </div>
+
+                <div id="commitment_date" class="timeline-event-node"
+                     ng-style="{'left':(selected.timeline.commitLeft+'px')}"></div>
+
+                <div id="go_live_date" class="timeline-event-node"
+                     ng-style="{'left':(selected.timeline.liveLeft+'px')}"></div>
+                </div>
+        </div>
+
+        <div class="row">
+
+            <div class="small-4 large-4 columns time"
+                 ng-style="{'left':(selected.timeline.commitLeft+'px')}">
+                <h3>{{ selected.timeline.commit_date.display_date }}</h3>
+
+                <p>
+                    <small><strong>Commitment Date</strong><br>
+                        {{ selected.timeline.commit_date.description }}
+                    </small>
+                </p>
+            </div>
+
+            <div class="small-4 large-4 column time">
+                <h3>{{ selected.timeline.live_date.display_date }}</h3>
+                <p>
+                    <small><strong>Target Go Live Date</strong><br>
+                        {{ selected.timeline.live_date.description }}
+                    </small>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="sideBar" class="min-timeline">
+    <div class="panel">
+        <h4><i class="fa fa-calendar-o orange"></i> &nbsp; Program Timeline </h4>
+    </div>
+
+    <div class="row">
+        <div class="small-4 large-4 columns">
+            <div class="ball-back"> <i class="fa fa-arrow-circle-right fa-fw"></i> </div>
+        </div>
+
+        <div class="small-12 large-12 columns">
+            <h5>{{ selected.timeline.kick_off_date.display_date }}</h5>
+            <p>
+                <strong>Kick Off Date</strong>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-4 large-4 columns">
+            <div class="ball-back"> <i class="fa fa-edit fa-fw"></i> </div>
+        </div>
+
+        <div class="small-12 large-12 columns">
+            <h5>{{ selected.timeline.cert_date.display_date }}</h5>
+            <p>
+                <strong>Certification Date</strong>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-4 large-4 columns">
+            <div class="ball-back"> <i class="fa fa-circle fa-fw"></i> </div>
+        </div>
+
+        <div class="small-12 large-12 columns">
+            <h5>{{ selected.timeline.commit_date.display_date }}</h5>
+            <p>
+                <strong>Commitment Date</strong>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-4 large-4 columns">
+            <div class="ball-back"> <i class="fa fa-check-circle fa-fw"></i> </div>
+        </div>
+
+        <div class="small-12 large-12 columns">
+            <h5>{{ selected.timeline.live_date.display_date }}</h5>
+            <p>
+                <strong>Target Go Live Date</strong>
+            </p>
+        </div>
+    </div>
+</div>

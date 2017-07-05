@@ -1,0 +1,1 @@
+module.exports = require("github:JamieMason/Jasmine-Matchers@3.5.0/index.js");

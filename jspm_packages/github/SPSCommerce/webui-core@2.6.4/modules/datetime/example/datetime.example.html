@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DateTime Module</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style>[ng-cloak] {visibility: hidden;}</style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./datetime.example').then(function (app) {
+            angular.bootstrap(document, [app.name]);
+        });
+    </script>
+</head>
+<body ng-controller="AppController as ctrl">
+<spsui-application class="centered">
+    <spsui-viewport>
+        <div class="columns">
+            <div ng-cloak>
+                <h1>DateTime Module Example</h1>
+
+                <div class="row collapse">
+                    <div class="columns small-6">
+                        <label>Select Timezone
+                            <select
+                                ng-model="ctrl.settings.timezone"
+                                ng-options="tz as tz for tz in ctrl.timezones"></select>
+                        </label>
+                    </div>
+                    <div class="columns small-6 small-offset-4 end">
+                        <label>Select Locale
+                            <select
+                                ng-model="ctrl.settings.locale"
+                                ng-options="key as value for (key, value) in ctrl.locales"></select>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <br><br>
+                    <h2>Date Time Formats</h2>
+                </div>
+
+                <div class="row">
+                    <table class="columns small-16">
+                        <thead>
+                        <tr>
+                            <th class="small-8">Format</th>
+                            <th class="small-6 end">Output</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(format, val) in ctrl.formats">
+                            <td>{{format}}</td>
+                            <td><spsui-date format="{{format}}" value="ctrl.date"></spsui-date></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <br><br>
+                    <h2>Relative Dates</h2>
+                </div>
+
+                <div class="row">
+                    <table class="columns small-16">
+                        <thead>
+                        <tr>
+                            <th class="small-8">Date</th>
+                            <th class="small-6 end">Output</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(key, date) in ctrl.relative">
+                            <td><spsui-date format="LONG_DATETIME" value="date"></spsui-date></td>
+                            <td><spsui-date format="LONG_DATETIME" value="date" relative="true"></spsui-date></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </spsui-viewport>
+</spsui-application>
+</body>
+</html>

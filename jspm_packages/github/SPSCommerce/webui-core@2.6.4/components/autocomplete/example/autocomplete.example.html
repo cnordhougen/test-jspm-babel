@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autocomplete Example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style type="text/css">
+        [ng-cloak] {visibility: hidden;}
+        .align-with-input,
+        button.align-with-input {
+            margin-top: 1.35em;
+        }
+    </style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./autocomplete.example').then(function (module) {
+            angular.bootstrap(document, [module.name]);
+        });
+    </script>
+</head>
+<body ng-controller="ExampleCtrl as ctrl">
+
+<spsui-application ng-cloak mode="centered">
+    <spsui-viewport>
+
+        <h1>Autocomplete Examples</h1>
+
+        <h3>Example 1: Array of Strings with Custom User Input</h3>
+
+        <p>This example uses a predefined array of strings and allows arbitrary user input</p>
+
+        <form name="ctrl.ex1.form">
+            <div class="row">
+                <div class="columns small-6">
+                    <label>
+                        Pick a Number: zero through twelve
+                        <spsui-autocomplete
+                            minchars="2"
+                            allow-user-input="true"
+                            source="ctrl.ex1.source"
+                            ng-model="ctrl.ex1.selected"
+                            on-ready="ctrl.ex1.whenReady"
+                            placeholder="Zero through Twelve"></spsui-autocomplete>
+                    </label>
+                </div>
+                <div class="columns small-10">
+                    <button type="button" class="align-with-input" ng-click="ctrl.ex1.api.searchFor('ve')">
+                        Search "ve"
+                    </button>
+                    <button type="button" ng-click="ctrl.ex1.api.searchAndSelect('Six')">
+                        Search and Select "Six"
+                    </button>
+                    <button type="button" ng-click="ctrl.ex1.api.clearSearch()">
+                        Clear Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row" ng-if="ctrl.ex1.selected">
+            <h3>Selection Details</h3>
+            <small><pre>ID: {{ctrl.ex1.api.selected.id}}, VALUE: {{ctrl.ex1.api.selected.value}}</pre></small>
+            <h3>Selected Item</h3>
+            <small><pre>{{ctrl.ex1.selected | json}}</pre></small>
+        </div>
+
+        <hr>
+
+        <h3>Example 2: Array Data with Custom ID and Text Keys</h3>
+
+        <p>
+            This example uses predefined data from a JSON file and custom functions for returning
+            the ID and text keys from the complex data objects.
+        </p>
+
+        <form name="ctrl.ex2.form">
+            <div class="row">
+                <div class="columns small-6">
+                    <label>
+                        Search for Fake Users by Name
+                        <spsui-autocomplete
+                            hint="true"
+                            minchars="2"
+                            model-type="object"
+                            source="ctrl.ex2.source"
+                            ng-model="ctrl.ex2.selected"
+                            on-ready="ctrl.ex2.whenReady"
+                            id-key="ctrl.ex2.formatIdKey"
+                            text-key="ctrl.ex2.formatTextKey"
+                            placeholder="Search for Users by Name"></spsui-autocomplete>
+                    </label>
+                </div>
+                <div class="columns small-10">
+
+                    <button type="button" class="align-with-input" ng-click="ctrl.ex2.api.searchFor('Al')">
+                        Search "Al"
+                    </button>
+
+                    <button type="button" ng-click="ctrl.ex2.api.searchFor('Ted')">
+                        Search "Ted"
+                    </button>
+
+                    <button type="button" ng-click="ctrl.ex2.api.searchAndSelect('Rebecca Ford')">
+                        Search and Select "Rebecca Ford"
+                    </button>
+
+                    <button type="button" ng-click="ctrl.ex2.random()">
+                        Random
+                    </button>
+
+                    <button type="button" ng-click="ctrl.ex2.api.clearSearch()">
+                        Clear Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row" ng-if="ctrl.ex2.selected">
+            <h3>Selection Details</h3>
+            <small><pre>ID: {{ctrl.ex2.api.selected.id}}, VALUE: {{ctrl.ex2.api.selected.value}}</pre></small>
+            <h3>Selected Item</h3>
+            <small><pre>{{ctrl.ex2.selected | json}}</pre></small>
+        </div>
+
+        <hr>
+
+        <h3>Example 3: Async Search for Suggestions</h3>
+        <p>This example uses Discogs.com to asynchronously search for artists.</p>
+
+        <form name="ctrl.ex3.form">
+            <div class="row">
+                <div class="columns small-6">
+                    <label>
+                        Search for Bands/Musicians by Name
+                        <spsui-autocomplete
+                            id-key="'id'"
+                            text-key="'title'"
+                            model-type="object"
+                            source="ctrl.ex3.source"
+                            ng-model="ctrl.ex3.selected"
+                            on-ready="ctrl.ex3.whenReady"
+                            placeholder="Search for Bands/Musicians by Name"></spsui-autocomplete>
+                    </label>
+                </div>
+                <div class="columns small-10">
+                    <button type="button" class="align-with-input" ng-click="ctrl.ex3.api.searchFor('The Beat')">
+                        Search "The Beat"
+                    </button>
+                    <button type="button" ng-click="ctrl.ex3.api.searchAndSelect('Pink Floyd')">
+                        Search and Select "Pink Floyd"
+                    </button>
+                    <button type="button" ng-click="ctrl.ex3.searchAndAlert()">
+                        Search and Select with Callback()
+                    </button>
+                    <button type="button" ng-click="ctrl.ex3.api.clearSearch()">
+                        Clear Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row" ng-if="ctrl.ex3.selected">
+            <h3>Selection Details</h3>
+            <small><pre>ID: {{ctrl.ex3.api.selected.id}}, VALUE: {{ctrl.ex3.api.selected.value}}</pre></small>
+            <h3>Selected Item</h3>
+            <small><pre>{{ctrl.ex3.selected | json}}</pre></small>
+        </div>
+
+    </spsui-viewport>
+</spsui-application>
+
+</body>
+</html>

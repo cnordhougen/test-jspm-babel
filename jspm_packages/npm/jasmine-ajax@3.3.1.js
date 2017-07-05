@@ -1,0 +1,1 @@
+module.exports = require("npm:jasmine-ajax@3.3.1/lib/mock-ajax.js");

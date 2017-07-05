@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intercom Module</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style>[ng-cloak] {visibility: hidden;}</style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./intercom.example').then(function (app) {
+            angular.bootstrap(document, [app.name]);
+        });
+    </script>
+</head>
+<body ng-cloak ng-controller="AppController as ctrl">
+<spsui-application mode="centered">
+    <spsui-viewport>
+        <div class="row">
+            <div class="small-16 columns">
+                <h1>Intercom Module Example</h1>
+                <p>
+                    In the bottom right-hand corner you should find the Intercom Messenger bubble.<br/>
+                    If the Messenger never loads, it may be caused by a lack of a valid user access token.
+                </p>
+                <p>
+                    <button class="confirm"
+                            ng-click="ctrl.show()"
+                            ng-disabled="!ctrl.state.ready"
+                            ng-if="!ctrl.state.showing">Show Messenger</button>
+
+                    <button class="confirm"
+                            ng-click="ctrl.hide()"
+                            ng-if="ctrl.state.showing">Hide Messenger</button>
+                </p>
+            </div>
+        </div>
+    </spsui-viewport>
+</spsui-application>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<div class="row">
+    <h1>Pagination Footer Component</h1>
+    <p>The standard pagination controls for lists and table data for SPS Commerce applications</p>
+    
+    <h2>Example</h2>
+    <p>
+        <div class="row">
+            <div class="large-16 columns">
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th width="25%">Name</th>
+                            <th width="25%">URI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ctrl.spotifyResponse.albums.items">
+                            <td ng-bind="item.name"></td>
+                            <td><a ng-href="{{item.href}}">{{item.uri}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <spsui-pagination-footer ng-show="ctrl.spotifyResponse.albums.items.length"
+                    api="ctrl.paginationApi"
+                    size-options="[5, 10, 15]"
+                    on-ready="ctrl.paginationReady"
+                    on-change="ctrl.paginationChange">
+                </spsui-pagination-footer>
+                <br/>
+                <br/>
+
+            </div>
+            <div class="large-16 columns panel">
+                <div class="row">
+                    <div class="large-4 columns">
+                        External Controls Example:
+                    </div>
+                    <div class="large-4 columns">
+                        <button class='button' ng-click="ctrl.paginationApi.prevPage()" ng-class="{'disabled':ctrl.paginationApi.state.pageNumber == 1}">Previous Page</button>
+                        <button class='button' ng-click="ctrl.paginationApi.nextPage()">Next Page</button>
+                    </div>
+                    <div class="large-2 columns">
+                        Page {{ ctrl.paginationApi.state.pageNumber }} of {{ ctrl.paginationApi.state.totalPages || 'many' }}
+                    </div>
+                    <div class="large-3 columns">
+                        <button class='button confirm' ng-click="ctrl.gotoRandomPage()">
+                        Page Randomizer!</button>
+                    </div>
+                    <div class="large-3 columns">
+                        <div class="switch tiny">
+                            Total On/Off
+                            <input id="insightSwitch0" type="checkbox" ng-model="ctrl.totalAvailability" ng-change="ctrl.totalAvailabilityChange()">
+                            <label for="insightSwitch0" title="totalAvailability">
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p>
+
+    <h2>Directive</h2>
+    <p>Directive used to build pagination control</p>
+    <h5>Markup</h5>
+    <div class="row">
+        <div class="large-16 columns">
+            <div class="panel condensed">
+                <code class="block">
+                    &nbsp;&lt;spsui-pagination-footer <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;size-options="[25,50,100]"<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;api="ctrl.paginationApi"<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;on-ready="ctrl.paginationReady"<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;on-change="ctrl.paginationChange"><br />
+                    &nbsp;&lt;/spsui-pagination-footer&gt;<br />
+                </code>
+            </div>
+        </div>
+    </div>
+    <h5>Arguments</h5>
+    <div class="panel condensed">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th width="15%">Name</th>
+                    <th width="15%">Type</th>
+                    <th width="70%">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>size-options</td>
+                    <td>array</td>
+                    <td>Array of number for items per page</td>
+                </tr>
+                <tr>
+                    <td>api</td>
+                    <td>object</td>
+                    <td>This object is decorated with pagination methods used to change the state. Silent flags can be set to avoid the triggering of an on-change callback
+                        <ul>
+                            <li>nextPage(bool silent)</li>
+                            <li>prevPage(bool silent)</li>
+                            <li>setPageSize(int newPageSize, bool silent)</li>
+                            <li>setPageNumber(int newPageNumber, bool silent)</li>
+                            <li>setTotalItems(int newTotal, bool silent)</li>
+                        </ul>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>api.state</td>
+                    <td>object</td>
+                    <td>This object is read-only and will throw errors if you try to set anything on it
+                            <ul>
+                                <li>pageNumber</li>
+                                <li>startIndex</li>
+                                <li>endIndex</li>
+                                <li>totalItems</li>
+                                <li>totalPages</li>
+                            </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>on-ready</td>
+                    <td>function</td>
+                    <td>Callback function that fires after the component has decorated the api. This lets you know that you can use the methods</td>
+                </tr>
+                <tr>
+                    <td>on-changed</td>
+                    <td>function</td>
+                    <td>Callback function that fires when the page changes and receives new and previous state objects</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

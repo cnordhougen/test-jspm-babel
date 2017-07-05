@@ -1,0 +1,66 @@
+@import "jspm:webui-core/style/sass/settings";
+
+spsui-autocomplete {
+
+    $input-font-size: .875rem;
+
+    .twitter-typeahead {
+        // !important because the default is inline-block, and we need block
+        // level inputs for our form elements to work in the grid system.
+        display: block !important;
+    }
+
+    .tt-dataset {
+        font-size: $input-font-size;
+        line-height: 1.5;
+    }
+
+    .tt-highlight {
+        color: $brand-blue;
+    }
+
+    .tt-menu {
+
+        margin-top: -2px;
+        max-height: 195px;
+        overflow: auto;
+
+        border-bottom-left-radius: $global-radius;
+        border-bottom-right-radius: $global-radius;
+        background-color: $pale-grey;
+
+        border: 1px solid $brand-blue;
+        border-top: 0;
+
+        &.tt-empty {
+            border-top: 0;
+            box-shadow: none;
+        }
+
+    }
+
+    .tt-suggestion {
+
+        padding: 3px 5px;
+        font-size: $input-font-size;
+        line-height: 1.5;
+
+        &:hover,
+        &.tt-cursor {
+
+            cursor: pointer;
+            background-color: $brand-blue;
+            color: $white;
+
+            .tt-highlight {
+                color: $white;
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+
+    }
+
+}

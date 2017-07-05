@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Payload Example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style type="text/css">
+        [ng-cloak] {visibility: hidden;}
+        .align-with-input,
+        button.align-with-input {
+            margin-top: 1.35em;
+        }
+    </style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./document-payload.example').then(function (module) {
+            angular.bootstrap(document, [module.name]);
+        });
+    </script>
+</head>
+<body ng-controller="ExampleCtrl as ctrl">
+
+<spsui-application ng-cloak mode="centered">
+    <spsui-viewport>
+
+        <h1>Document Payload Examples</h1>
+
+        <h3>Example 1: With A Description</h3>
+
+        <spsui-document-payload document="ctrl.docWithDescription"></spsui-document-payload>
+
+        <hr>
+
+        <h3>Example 2: Without A Description</h3>
+
+        <spsui-document-payload document="ctrl.docWithoutDescription"></spsui-document-payload>
+
+    </spsui-viewport>
+</spsui-application>
+
+</body>
+</html>

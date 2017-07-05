@@ -1,0 +1,409 @@
+//Adding\overriding some custom behaviour to forms elements in addition to default foundation styles
+@mixin form-element {
+  border-radius: $input-border-radius;
+  &:disabled {
+    opacity: .5;
+  }
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    opacity: .5;
+  }
+}
+
+//Adding\overriding border and background styles of error input
+@mixin form-error-color($color: $error-color) {
+  background-color: $white;
+  border-color: $color;
+
+  &:hover, :focus {
+    background-color: $white;
+    border-color: $color;
+    box-shadow: 0 0 5px lighten($color, 20%);
+  }
+}
+
+//This overrides default foundation select styles
+@mixin form-select {
+  border-bottom-width: 3px;
+  border-radius: $global-radius;
+  background-color: $pale-grey;
+  // Hide the dropdown arrow shown in newer IE versions
+  &::-ms-expand {
+    display: none;
+  }
+  // The custom arrow have some fake horizontal padding so we can align it
+  // from the right side of the element without relying on CSS3
+  // We can safely use leftmost and rightmost now
+  background: darken($pale-grey,5%) no-repeat center right 10px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAMAAABV0m3JAAAAG1BMVEX///9VVVVOdnZodHhodnppdHtod3lpdntrd3toHjPUAAAACHRSTlMABg2AhI2WxZ6MdssAAAA8SURBVHjaXcjJDQAgDMRAIBzpv2KigNYIv6wpUbei7P5wN9n96S61/Jxz2lVRWQuTYo9iKIZin2IohmIbiaAC6B1pZFIAAAAASUVORK5CYII=);
+  background-size: 10px 6px;
+  padding: rem-calc(6);
+  font-size: rem-calc(12);
+  font-weight: $semibold;
+
+  &:hover {
+    background-color: $pale-grey;
+    border-color: $input-border-color;
+  }
+
+  &:focus {
+    background-color: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    outline: none;
+    box-shadow: 0 0 5px $light-blue;
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+
+label {
+  position: relative;
+}
+
+label.required:before {
+  content:"*";
+  color: $orange;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 0;
+  position: absolute;
+  top: .5em;
+  left: -12px;
+}
+
+select {
+  @include form-select;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea {
+  @include form-element;
+}
+
+textarea {
+  resize: vertical;
+}
+
+table td {
+  input, select, textarea {
+    margin: 0;
+  }
+}
+
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+  margin: 0 0 .5rem 0;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  font-weight: $book;
+}
+
+/* Remove margin if an element is inside a table cell */
+td input[type="file"], th input[type="file"],
+td input[type="checkbox"], th input[type="checkbox"],
+td input[type="radio"], th input[type="radio"],
+td select, th select {
+  margin: 0;
+}
+
+.error {
+  input,
+  textarea,
+  select {
+    @include form-error-color;
+    color: $error-color;
+  }
+}
+
+.error small, small.error {
+  border-radius: 0 0 3px 3px;
+}
+
+input.error,
+textarea.error,
+select.error {
+  @include form-error-color;
+}
+
+// styling the placeholder text within inputs
+
+::-webkit-input-placeholder {
+  color: lighten($light-grey, 5%);
+  font-weight: $light;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: lighten($light-grey, 5%);
+  font-weight: $light;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: lighten($light-grey, 5%);
+  font-weight: $light;
+}
+
+:-ms-input-placeholder {
+  color: lighten($light-grey, 5%);
+  font-weight: $light;
+}
+
+// We use this mixin to style fieldsets
+@mixin fieldset {
+  border: none;
+  border-top: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+  padding: $fieldset-padding;
+  margin: $fieldset-margin;
+
+  // and legend styles
+  legend {
+    font-weight: $book;
+    font-size: 16px;
+    text-transform: none;
+    background: transparent;
+    color: $deep-blue;
+    padding: $legend-padding;
+    margin: 0;
+    margin-#{$default-float}: -5px;
+  }
+
+  legend input[type="checkbox"] + label {
+    font-weight: $book;
+    font-size: 16px;
+    text-transform: none;
+    background: transparent;
+    color: $deep-blue;
+    padding: $legend-padding;
+    margin: 0;
+    margin-#{$default-float}: 15px;
+  }
+}
+
+fieldset {
+  @include fieldset;
+}
+
+fieldset fieldset {
+  margin: $fieldset-margin;
+  border: 1px solid $hr-border-color;
+  padding: 10px 20px;
+  border-radius: $global-radius;
+
+  & legend {
+    color: $deep-blue;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: $book;
+  }
+
+  & legend input[type="checkbox"] + label {
+    color: $deep-blue;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: $book;
+  }
+}
+
+fieldset fieldset fieldset {
+  margin: $fieldset-margin;
+}
+
+//File input
+
+input[type="file"] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.droparea {
+  border: 2px dashed rgba($light-grey, .5);
+  padding: rem-calc(20);
+  text-align: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  & .upload {
+    color: $light-grey;
+    font-weight: $semibold;
+  }
+}
+
+.file-container {
+  padding: rem-calc(5) rem-calc(30) rem-calc(5) rem-calc(5);
+
+  border: 1px solid $light-grey;
+  border-radius: $global-radius;
+  background-color: $white;
+  max-width: rem-calc(220);
+  overflow: hidden;
+  cursor: pointer;
+
+  > div {
+    float: left;
+    &:first-child {
+      width: 30%;
+    }
+    &:last-child {
+      width: 70%;
+      word-break: break-all;
+      padding-left: rem-calc(10);
+    }
+  }
+  .image-container {
+    background: #e9e9e9;
+    border: 1px solid #d0d0d0;
+    height: rem-calc(50);
+    position: relative;
+
+    i.fa {
+      position: absolute;
+      color: $light-grey;
+      width: 33%;
+      left: 33%;
+      top: 50%;
+      line-height: 0;
+      text-align: center;
+    }
+    .spinner {
+      height: 24px;
+      width: 24px;
+      top: 25%;
+      border-left: 3px solid rgba(0, 0, 0, 0.25);
+      border-right: 3px solid rgba(0, 0, 0, 0.25);
+      border-bottom: 3px solid rgba(0, 0, 0, 0.25);
+      border-top: 3px solid rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: rem-calc(12);
+  }
+  .file-info {
+    font-style: italic;
+    font-weight: 400;
+  }
+  a {
+    border-bottom: none;
+  }
+
+  &.upload-error {
+    border-color: $error-color;
+    .image-container {
+      border-color: #ff98a2;
+      background-color: rgba($error-color, 0.1);
+      i {
+        color: rgba($error-color, 0.5);
+      }
+    }
+    a {
+      color: $error-color;
+    }
+  }
+}
+
+/* Custom Checkboxes */
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    padding: 0;
+    font-size: rem-calc(12);
+    line-height: rem-calc(16);
+    margin-left: rem-calc(20);
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: rem-calc(16);
+      width: rem-calc(16);
+      text-align: center;
+      font-size: rem-calc(12);
+      line-height: 12px;
+      background: $white;
+      border: 2px solid lighten($light-grey, 10%);
+      margin-left: rem-calc(-20);
+    }
+  }
+
+  &:checked + label:before {
+    content: "\2714";
+    color: $brand-blue;
+    background: $pale-blue;
+    border: 2px solid darken($light-blue, 25%);
+  }
+}
+
+/* Custom Radio Buttons */
+$radiobutton-border-radius: rem-calc(8);
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  & + label {
+    position: relative;
+    padding: 0;
+    font-size: rem-calc(12);
+    line-height: rem-calc(20);
+    margin-left: rem-calc(20);
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 2px;
+      height: 17px;
+      width: 17px;
+      background: white;
+      border: 2px solid lighten($light-grey, 10%);
+      margin-left: -20px;
+      box-shadow: inset 0px 0px 0px 2px white;
+      -webkit-box-shadow: inset 0px 0px 0px 2px white;
+      -moz-box-shadow: inset 0px 0px 0px 2px white;
+      -o-box-shadow: inset 0px 0px 0px 2px white;
+      -webkit-border-radius: $radiobutton-border-radius;
+      -moz-border-radius: $radiobutton-border-radius;
+      -o-border-radius: $radiobutton-border-radius;
+      border-radius: $radiobutton-border-radius;
+    }
+  }
+  &:checked + label:before {
+    background: $light-blue;
+    border: 2px solid darken($light-blue, 25%);
+  }
+}
+
+.postfix.button, .postfix.button:focus, .postfix.button:hover {
+    border-color: $input-border-color;
+    border-width: 1px 1px 1px 0;
+}
+
+.prefix.button, .prefix.button:focus, .prefix.button:hover {
+    border: $input-border-color 1px solid;
+    border-right-width: 0;
+    padding: .42857rem .75rem;
+}

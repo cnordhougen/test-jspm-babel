@@ -1,0 +1,2 @@
+spsui-feedback-container,spsui-feedback-msg{display:block}spsui-feedback-msg .feedback{padding-right:35px}spsui-feedback-msg .feedback .close{top:20px}spsui-feedback-container.pad-top spsui-feedback-msg:first-of-type{margin-top:20px}spsui-feedback-container.growl{position:fixed;min-width:300px;width:30%;top:20px;right:20px;z-index:10}
+/*# sourceMappingURL=style.min.css.map */

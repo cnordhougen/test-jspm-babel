@@ -1,0 +1,91 @@
+@mixin alert-style($bg: $primary-color) {
+
+  $bg-lightness: lightness($bg);
+
+  background-color: $bg;
+  border-color: darken($pale-grey, 8%);
+
+  @if $bg-lightness > 70% {
+    color: $alert-font-color-alt;
+  } @else {
+    color: $alert-font-color;
+  }
+}
+
+//This overrides default .alert-box foundation styles
+.alert-box {
+  &.success {
+    @include alert-style($success-color);
+  }
+  &.warning {
+    @include alert-style($warning-color);
+  }
+  &.error {
+    @include alert-style($error-color);
+  }
+  &.secondary {
+    @include alert-style($secondary-color);
+  }
+  &.info {
+    @include alert-style($info-color);
+  }
+  .close {
+    border-bottom: 0;
+    line-height: inherit;
+    &:hover {
+      color: rgba($white, 1);
+    }
+  }
+}
+
+.flashblock, .feedback {
+  @extend .alert-box;
+  @include radius($alert-radius);
+}
+
+.feedback {
+  font-size: rem-calc(14);
+  & strong {
+    font-weight: 700;
+  }
+  & a {
+    color: rgba($white, 1);
+    border-bottom: 1px solid rgba($white, .25);
+    &:hover {
+      color: rgba($white, .65);
+    }
+  }
+  & .feedback-icon {
+    vertical-align: middle;
+    padding-right: rem-calc(8);
+    color: rgba($white, .5);
+  }
+
+  &.tip {
+    @include alert-style($table-row-select);
+    border-width: 1px;
+    border-color: darken($table-row-select,20%);
+    border-radius: $alert-radius;
+    color: rgba(0,0,0,.5);
+    & strong {color: rgba(0,0,0,.75);}
+    & a {
+      color: rgba($link-color, 1);
+      border-bottom: 0;
+      &:hover {
+        color: $deep-blue;
+        border-bottom: 0;
+      }
+    }
+    & .feedback-icon {
+      color: $yellow;
+    }
+  }
+}
+
+.flashblock {
+  padding: 6px 8px 6px 10px;
+  border-bottom: 0;
+}
+
+
+

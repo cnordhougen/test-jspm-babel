@@ -1,0 +1,1 @@
+module.exports = require("npm:core-decorators@0.14.0/lib/core-decorators.js");
