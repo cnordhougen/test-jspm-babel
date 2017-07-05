@@ -1,7 +1,7 @@
 /* eslint-env node */
 export default gulp => gulp.task(
-    'clean',
-    'Remove transpiled source, maps, and build',
+    'dist',
+    'Remove unnecessary files for distribution',
     () => {
         const del = require('del');
         return del([
