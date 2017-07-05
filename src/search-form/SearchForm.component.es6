@@ -5,6 +5,8 @@ import { ChangeDetectorRef,
          Input,
          Output             } from 'ng-facade/core';
 
+import PATH from '../Path.constant';
+
 import template from './SearchForm.template.html!text';
 import styles   from './SearchForm.styles.min.css!text';
 
@@ -23,7 +25,7 @@ class SearchFormComponent {
     ngOnInit() {
         this.localization.localize({
             component: 'search-form',
-            path:      './lang/',
+            path:      `${PATH}/src/search-form/lang/`,
         });
     }
 
