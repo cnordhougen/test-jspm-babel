@@ -1,0 +1,11 @@
+<form>
+  <div class="panel searchform">
+    <ng-transclude></ng-transclude>
+    <div class="row search-actions">
+      <div class="large-16 small-16 txt-right">
+        <a class="search-clear" (click)="ctrl.clearForm()" translate="xref-ui.search.clear"></a>
+        <button type="submit" class="key" (click)="ctrl.search.emit()" translate="xref-ui.search.search"></button>
+      </div>
+    </div>
+  </div>
+</form>

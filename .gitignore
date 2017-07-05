@@ -55,3 +55,8 @@ src/**/*.js.map
 yarn.lock
 package-lock.json
 
+index.js
+src/**/*.js
+src/**/*.css
+*.map
+
