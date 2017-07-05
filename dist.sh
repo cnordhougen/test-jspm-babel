@@ -4,4 +4,4 @@ jspm install
 gulp build
 gulp dist
 git commit -am 'Dist'
-git push -f origin master:test
+git push -f origin HEAD:test
