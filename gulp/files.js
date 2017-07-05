@@ -1,5 +1,5 @@
 const dirs = {
-    coverage:     'coverage',
+    coverage:     'test/coverage',
     gulp:         'gulp',
     jspm:         'jspm_packages',
     localization: 'lang',
