@@ -1,8 +1,9 @@
 const dirs = {
-    coverage:     'test/coverage',
-    docs:         'docs',
+    coverage:     'coverage',
+    gulp:         'gulp',
     jspm:         'jspm_packages',
     localization: 'lang',
+    node:         'node_modules',
     src:          'src',
 };
 
@@ -12,7 +13,9 @@ export default {
     coverage:    `${dirs.coverage}/**/*.html`,
     css:         `${dirs.src}/**/*.css`,
     cssMaps:     `${dirs.src}/**/*.css.map`,
+    dot:         '.*',
     es6:         '**/*.es6',
+    gulpfile:    'gulpfile.babel.js',
     js:          `${dirs.src}/**/!(*spec).js`,
     jsMaps:      `${dirs.src}/**/*.js.map`,
     karmaConfig: 'karma.conf.js',
