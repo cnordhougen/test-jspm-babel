@@ -14,11 +14,18 @@ import styles   from './SearchForm.styles.min.css!text';
     styles:   [ styles ],
     template,
 }) /* eslint-enable no-multi-spaces */
-@Inject({ ref: ChangeDetectorRef })
+@Inject({ ref: ChangeDetectorRef, localization: 'localizationService' })
 class SearchFormComponent {
     @Input() searchValues = {};
     @Output() search = new EventEmitter();
     @Output() clear = new EventEmitter();
+
+    ngOnInit() {
+        this.localization.localize({
+            component: 'search-form',
+            path:      './lang/',
+        });
+    }
 
     clearForm() {
         for (const key of Object.keys(this.searchValues)) {
