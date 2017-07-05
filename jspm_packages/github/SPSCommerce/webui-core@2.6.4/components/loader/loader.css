@@ -1,0 +1,69 @@
+
+spsui-loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 3rem;
+    width: 3rem;
+    margin: -1.5em;
+    line-height: 0;
+    padding-bottom: 0;
+    -webkit-animation: rotation .7s infinite linear;
+    -moz-animation: rotation .7s infinite linear;
+    -o-animation: rotation .7s infinite linear;
+    animation: rotation .7s infinite linear;
+    border-radius: 100%;
+    border-left: 6px solid #0097cc;
+    border-right: 6px solid #0097cc;
+    border-bottom: 6px solid #0097cc;
+    border-top: 6px solid #33caff;
+}
+
+body.loading * {
+    display: none;
+}
+
+body.loading {
+    visibility: visible !important;
+}
+
+body.loading spsui-loader {
+    display: block !important;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

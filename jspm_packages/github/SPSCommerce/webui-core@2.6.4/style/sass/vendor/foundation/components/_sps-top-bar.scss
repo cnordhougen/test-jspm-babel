@@ -1,0 +1,109 @@
+.top-bar {
+  a {
+    border-bottom-width: 0;
+    &:hover {
+      border-bottom-width: 0;
+    }
+    &.button {
+      border-bottom-width: 3px;
+    }
+  }
+}
+
+.top-bar-section ul.menu-links li a {
+  color: $topbar-menu-links-color;
+}
+
+.top-bar-section ul.menu-links ul.dropdown {
+  border: 1px solid $light-grey;
+  border-top: 0;
+  -webkit-box-shadow: 0 0 2px 0 rgba($slate-grey,.15);
+  box-shadow: 0 0 2px 0 rgba($slate-grey,.15);
+}
+
+// profile panel stuff (in the top bar)
+
+.top-bar-section li a.avatar {
+  width: 45px;
+  height: 45px;
+  padding: 0 !important;
+  line-height: 0 !important;
+
+  &:hover {
+    background: darken($brand-blue, 3%);
+  }
+
+  & img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+#content-drop.profile-panel {
+  padding: 20px;
+}
+
+.profile-panel .pp-avatar, .profile-panel .pp-info, .profile-panel .pp-viewas {
+  float: left;
+  font-size: rem-calc(16);
+}
+
+.profile-panel .pp-avatar {
+  width: 96px;
+}
+
+.profile-panel .pp-avatar img {
+  width: 76px;
+  height: 76px;
+}
+
+.profile-panel .pp-info {
+  width: 162px;
+}
+
+.profile-panel .pp-info dt {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.profile-panel .pp-info dd {
+  font-size: rem-calc(14);
+  color: $medium-grey;
+}
+
+.profile-panel .pp-info dd.pp-viewprofile {
+  margin-top: -10px;
+  font-size: rem-calc(16);
+  float: left;
+  width: 90px;
+}
+
+.profile-panel .pp-info dd.pp-signout {
+  float: left;
+  width: 70px;
+}
+
+.profile-panel .pp-info dd.pp-signout a {
+  border-bottom: 0;
+}
+
+.profile-panel .pp-viewas {
+  width: 300px;
+  margin: 20px -20px -20px -20px;
+  padding: 15px 20px 20px 20px;
+  border-top: 1px solid darken($pale-grey, 10%);
+}
+
+.profile-panel .pp-viewas span {
+  font-size: 12px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.profile-panel .pp-viewas strong {
+  font-size: 14px;
+}
+
+.profile-panel .pp-viewas a.button {
+  margin-top: -5px;
+}

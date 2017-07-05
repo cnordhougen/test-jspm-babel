@@ -1,0 +1,15 @@
+<blockquote class="feedback cloak" ng-class="ctrl.settings.type">
+
+    <i ng-if="ctrl.settings.icon" class="feedback-icon fa fa-lg" ng-class="ctrl.settings.icon"></i>
+
+    <strong translate="{{ctrl.settings.label}}" no-translate-cloak></strong>
+    
+    <span  ng-if="!ctrl.message" translate-values="ctrl.settings.localizeValues" translate no-translate-cloak><ng-transclude></ng-transclude></span>
+
+    <span ng-if="ctrl.message" translate-values="ctrl.settings.localizeValues" translate="{{ctrl.message}}" no-translate-cloak></span>
+    
+    <a ng-if="ctrl.settings.closeable" class="close" ng-click="ctrl.close()">
+        <i class="fa fa-times"></i>
+    </a>
+
+</blockquote>

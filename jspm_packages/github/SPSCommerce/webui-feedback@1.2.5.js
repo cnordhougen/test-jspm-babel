@@ -1,0 +1,1 @@
+module.exports = require("github:SPSCommerce/webui-feedback@1.2.5/index.js");

@@ -1,0 +1,1 @@
+module.exports = require("github:xdan/datetimepicker@2.4.5/jquery.datetimepicker");

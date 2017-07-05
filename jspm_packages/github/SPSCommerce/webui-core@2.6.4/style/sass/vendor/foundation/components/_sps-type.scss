@@ -1,0 +1,232 @@
+// Default Link Styles
+a {
+  border-bottom: rem-calc(1) solid rgba($light-blue, .5);
+  transition: all 0.25s ease;
+  
+  &:visited {
+    outline: 0 none;
+  }
+  &:active {
+    outline: 0 none;
+  }
+  &:hover {
+    border-bottom: rem-calc(1) solid transparent;
+  }
+  &:focus {
+    color: $brand-blue;
+  }
+}
+
+// Default paragraph styles
+p {
+  &.note {
+    color: lighten($medium-grey, 15%);
+    font-size: $rem-base * .8;
+  }
+
+  &.hint {
+    color: rgba($slate-grey, .5);
+  }
+
+  &.lead {
+    font-weight: $light;
+    font-size: rem-calc(28);
+    line-height: rem-calc(36);
+    letter-spacing: -.015em;
+    color: $medium-grey;
+  }
+}
+
+.big {
+  font-size: rem-calc(36);
+  line-height: rem-calc(50);
+}
+
+.bigger {
+  font-size: rem-calc(96);
+  line-height: rem-calc(120);
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+.book {
+  font-weight: $book;
+}
+
+.semibold {
+  font-weight: $semibold;
+}
+
+.light {
+  font-weight: $light;
+}
+
+// Default header styles
+
+h1 {
+  font-weight: $light;
+  color: $slate-grey;
+  letter-spacing: -.025em;
+}
+
+h2 {
+  font-weight: $light;
+  color: $deep-blue;
+}
+
+h3 {
+  font-weight: $book;
+  color: $plum !important;
+  margin-top: $header-top-margin + rem-calc(16);
+}
+
+h4 {
+  font-weight: $semibold;
+  color: $slate-grey;
+  text-transform: uppercase;
+  letter-spacing: rem-calc(-.5);
+}
+
+h5 {
+  font-weight: $semibold;
+  color: $medium-grey;
+  text-transform: uppercase;
+}
+
+/* Helpful Typography Defaults */
+
+strong,
+b {
+  font-weight: $semibold;
+}
+
+small {
+  &.hint {
+    opacity: .55;
+  }
+}
+
+code {
+  border-radius: $global-radius;
+  font-size: rem-calc(12);
+  color: $code-color;
+
+  & a {
+    font-weight: $book;
+    border-bottom: 0;
+  }
+  & a:hover {
+    border-bottom: 0;
+  }
+}
+
+code.block {
+  display: block;
+  font-size: rem-calc(14);
+  color: $code-color;
+  border-radius: $global-radius;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Unordered Lists */
+ul {
+  li {
+    ul,
+    ol {
+      font-size: 1rem; /* Override nested font-size change */
+    }
+  }
+}
+
+p + ul {
+  margin-top: -10px;
+  padding-top: 0;
+  }
+
+ol {
+  padding-left: 1rem;
+}
+
+.fa-ul li {
+  margin-bottom: rem-calc(12);
+}
+
+.fa-ul li i.fa {
+  margin-top: 3px;
+}
+
+
+/* Abbreviations */
+abbr,
+acronym {
+  font-weight: $semibold;
+  color: darken($body-font-color, 20%);
+  border-bottom: $acronym-underline !important;
+}
+
+/* Blockquotes */
+blockquote,
+blockquote p {
+  line-height: 1.4rem;;
+  color: $blockquote-font-color;
+  font-size: rem-calc(20);
+  font-weight: $light;
+  margin-bottom: 0;
+  padding-bottom: .5rem;
+}
+
+figure {
+  display: table;
+  margin: 0;
+}
+
+figure img {
+  display: block;
+  max-width: 100%;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  padding: rem-calc(2) rem-calc(4);
+  background: $pale-grey;
+  font-size: rem-calc(12);
+  font-style: italic;
+  line-height: 1.4rem;
+  color: lighten($slate-grey,20%);
+}
+
+
+/* Definition Lists */
+dl {
+  dt {
+    margin-bottom: $definition-list-header-margin-bottom;
+    font-weight: $definition-list-header-weight;
+    color: $plum;
+  }
+  dd {
+    margin-bottom: $definition-list-margin-bottom;
+    font-size: rem-calc(14);
+    line-height: 1.25em;
+    color: $medium-grey;
+    }
+}
+
+
+
+
+
+// Custom Icon Sizes
+.fa.fa-16 {font-size: rem-calc(16);}
+.fa.fa-18 {font-size: rem-calc(18);}
+.fa.fa-20 {font-size: rem-calc(20);}
+.fa.fa-24 {font-size: rem-calc(24);}
+.fa.fa-30 {font-size: rem-calc(30);}

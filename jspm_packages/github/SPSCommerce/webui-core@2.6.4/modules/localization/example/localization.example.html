@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Localization Module</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style>[ng-cloak] {visibility: hidden;}</style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./localization.example').then(function (app) {
+            angular.bootstrap(document, [app.name]);
+        });
+    </script>
+</head>
+<body ng-cloak ng-controller="AppController as ctrl">
+<spsui-application mode="centered">
+    <spsui-viewport>
+        <div class="row">
+            <div class="small-16 columns">
+
+                <h1 translate="localizationExample.title"></h1>
+
+                <p translate="localizationExample.p"></p>
+
+                <p>
+                    <button ng-click="ctrl.switch('en-US')">English</button>
+                    <button ng-click="ctrl.switch('es-ES')">Spanish</button>
+                </p>
+
+                <!-- This component loads it's own translations -->
+                <component-example></component-example>
+            </div>
+        </div>
+    </spsui-viewport>
+</spsui-application>
+</body>
+</html>

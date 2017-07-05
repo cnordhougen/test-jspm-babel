@@ -1,0 +1,1 @@
+module.exports = require("github:harvesthq/chosen@1.4.2/chosen.jquery");

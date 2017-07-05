@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spreadsheet Example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style>body {visibility: hidden;}</style>
+    <script src="/jspm/system.js"></script>
+    <script src="/system.config.js"></script>
+    <script>
+        System.import('/core/all');
+    </script>
+</head>
+<body>
+
+<spsui-application>
+    <div class="handsontable-container" id="HANDS_ON_TABLE"></div>
+</spsui-application>
+
+<script>
+
+    System.import('../spreadsheet').then(kickoff);
+
+    /**
+     * Kickoff the Handsontable spreadsheet example
+     */
+    function kickoff() {
+
+        var data = [
+            [1, "B950", "04/23/2014", "Toyota"],
+            [2, "I170", "06/11/2014", "Honda"],
+            [3, "D500", "09/06/2014", "Honda"],
+            [4, "G830", "10/18/2014", "Honda"]
+        ];
+
+        var hotSettings = {
+            "colHeaders": true,
+            "rowHeaders": true,
+            "columns": [{
+                "title": "<span class=\"required\"></span> Item Numbers",
+                "maxLength": 1,
+                "readOnly": false,
+                "type": "numeric"
+            }, {
+                "title": "Select Box",
+                "name": "chargeCode",
+                "maxLength": 4,
+                "readOnly": false,
+                "type": "mappedselect",
+                "source": [{
+                    "label": "Damaged Merchandise",
+                    "value": "B950"
+                }, {
+                    "label": "Warehouse",
+                    "value": "I570"
+                }, {
+                    "label": "Advertising Allowance",
+                    "value": "A260"
+                }, {
+                    "label": "Trade Discount",
+                    "value": "I170"
+                }, {
+                    "label": "Mark Down Allowance",
+                    "value": "ZZZZ"
+                }, {
+                    "label": "Handling",
+                    "value": "D500"
+                }, {
+                    "label": "Shipping and Handling Charge",
+                    "value": "G830"
+                }],
+                "helpIcon": "<a data-tooltip aria-haspopup=\"true\" class=\"has-tip\" title=\"<strong>Service</strong><p>Character Length:<br>Min = 4<br>Max = 4</p><p>EDI:<br>ediSegmentTag = SAC<br>ediElementPosition = 02<br>ediElementId = 1300</p>\"><i class=\"fa fa-question-circle\"></i></a>"
+            }, {
+                "title": "<span class=\"required\"></span> Dates",
+                "maxLength": 15,
+                "readOnly": false,
+                "type": "datetime"
+            }, {
+                "title": "<span class=\"required\"></span> Description",
+                "maxLength": 100,
+                "readOnly": false,
+            }, {
+                "title": "Tables in Tables",
+                "maxLength": 2,
+                "readOnly": false,
+                "renderer": tableInTableRenderer
+            }, {
+                "title": "Remove",
+                "data": "entityPath",
+                renderer: removeRenderer,
+                "readOnly": true
+            }],
+            "columnSorting": true,
+            "data": data,
+            "stretchH": "all",
+            "readOnly": false,
+            "fillHandle": false
+        };
+
+        function buttonRenderer(td, clickFunction, value, buttonHtml) {
+            var $button = window.$(buttonHtml);
+            $button.click(function () {
+                clickFunction(value);
+            });
+            window.$(td).empty().append($button); //empty is needed because you are rendering to an existing cell
+        }
+
+        function removeRenderer(instance, td, row, col, prop, value) {
+            buttonRenderer(td, function () {
+                alert('Remove button clicked')
+            }, value, '<a class="no-border"><i class="fa fa-trash-o fa-lg">&nbsp;</i></a>');
+        }
+
+
+        function tableInTableRenderer(instance, td, row, col, prop, value) {
+            buttonRenderer(td, function () {
+                alert('Table button clicked')
+            }, value, '<a class="no-border"><i class="fa fa-table fa-lg">&nbsp;</i></a>');
+        }
+
+        var container = document.getElementById('HANDS_ON_TABLE');
+        var hot = new Handsontable(container, hotSettings);
+
+    }
+
+</script>
+
+</body>
+</html>

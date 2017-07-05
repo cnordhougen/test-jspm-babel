@@ -1,0 +1,363 @@
+$key-button-bg-color: lighten($slate-grey, 15%);
+$key-button-border-color: lighten($slate-grey, 10%);
+$confirm-button-bg-color: $brand-blue;
+$delete-button-bg-color: $error-color;
+
+//We want slightly another padding calculation algorythm, also there is no use case for full-width button
+
+@mixin button-base() {
+  border-style: $button-border-style;
+  border-width: $button-border-width;
+  cursor: $cursor-pointer-value;
+  font-family: $button-font-family;
+  font-weight: $semibold;
+  line-height: 1;
+  position: relative;
+  text-decoration: none;
+  text-align: $button-font-align;
+  display: inline-block;
+  border-radius: $global-radius;
+  outline: none;
+
+  // Prevents text selection when clicking a button multiple times
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin button-size($padding: $button-med) {
+  @if $padding {
+    @if $padding == $button-med {
+      font-size: $button-font-med;
+      padding: $button-med/1.75 $button-med;
+    } @else if $padding == $button-tny {
+      font-size: $button-font-tny;
+      padding: $button-tny/1.4 $button-tny;
+    } @else if $padding == $button-sml {
+      font-size: $button-font-sml;
+      padding: $button-sml/1.5 $button-sml;
+    } @else if $padding == $button-lrg {
+      font-size: $button-font-lrg;
+      padding: $button-lrg/1.25 $button-lrg;
+    }
+  }
+}
+
+@mixin button-style($bg: $button-bg-color, $radius: false, $disabled: false) {
+
+  // We control which background styles are used,
+  // these can be removed by setting $bg:false
+  @if $bg {
+
+    background-color: $bg;
+    &:hover,
+    &:focus {
+      border-bottom-width: 3px;
+    }
+    // We control the text color for you based on the background color.
+
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+    @if $bg-lightness > 70% {
+      color: $button-font-color-alt;
+      &:hover,
+      &:focus {
+        color: $button-font-color-alt;
+      }
+    } @else {
+      color: $button-font-color;
+      &:hover,
+      &:focus {
+        color: $button-font-color;
+      }
+    }
+  }
+
+  @if ($disabled) {
+    opacity: $button-disabled-opacity;
+    cursor: $button-disabled-cursor;
+    color: darken($medium-grey, 5%);
+    border-color: lighten($light-grey, 15%);
+    background-color: $pale-grey;
+    &:hover,
+    &:focus {
+      background-color: $pale-grey;
+      color: darken($medium-grey, 5%);
+      top: 0;
+      border-bottom-width: 3px;
+    }
+  }
+
+  // We can control how much button radius is used.
+  @if $radius == true {
+    @include radius($button-radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
+  @content;
+}
+
+button, .button, a.button {
+  @include button-base;
+  @include button-size;
+  @include button-style {
+    border-color: $button-border-color;
+    &:hover {
+      background: $pale-grey;
+      border-color: lighten($light-grey, 15%);
+    }
+  }
+  &.large {
+    @include button-size($padding: $button-lrg);
+  }
+  &.small {
+    @include button-size($padding: $button-sml);
+  }
+  &.tiny {
+    @include button-size($padding: $button-tny);
+  }
+
+  &.key {
+    @include button-style($bg: $key-button-bg-color) {
+      border-color: $key-button-border-color;
+      &:hover {
+        background: $key-button-border-color;
+        border-color: lighten($slate-grey, 5%);
+      }
+    }
+  }
+
+  &.confirm {
+    @include button-style($bg: $confirm-button-bg-color) {
+      border-color: darken($confirm-button-bg-color, 5%);
+      &:hover, &:focus {
+        background: darken($confirm-button-bg-color, 5%);
+        border-color: darken($confirm-button-bg-color, 10%);
+      }
+    }
+  }
+
+  &.toggle {
+    background: $white;
+    border: 1px solid darken($pale-grey, 10%);
+    color: lighten($medium-grey, 20%);
+
+    &:hover {
+      background: $pale-grey;
+      color: $medium-grey;
+    }
+
+    &.selected {
+      background: $pale-blue;
+      border-color: $light-blue;
+      color: $link-color;
+    }
+  }
+
+  &.delete {
+    @include button-style($bg: $delete-button-bg-color) {
+      border-color: darken($delete-button-bg-color, 20%);
+      &:hover, &:focus {
+        background: $delete-button-bg-color;
+        border-color: darken($delete-button-bg-color, 20%);
+      }
+    }
+  }
+
+  &.no-border {
+    background: none;
+    color: $medium-grey;
+    padding: 2px 5px;
+    border: none !important;
+    &:hover, &:focus {
+      color: $slate-grey;
+    }
+  }
+
+  &.disabled, &[disabled] {
+    @include button-style($disabled: true);
+    &.key {
+      @include button-style($bg: $key-button-bg-color, $disabled: true)
+    }
+    &.confirm {
+      @include button-style($bg: $confirm-button-bg-color, $disabled: true)
+    }
+    &.delete {
+      @include button-style($bg: $delete-button-bg-color, $disabled: true)
+    }
+  }
+}
+
+/* Loading Spinner ... Pure CSS, yo! */
+.spinner {
+  height: rem-calc(13);
+  width: rem-calc(13);
+  margin: 0px auto;
+  line-height: 0;
+  position: relative;
+  display: block;
+  -webkit-animation: rotation .7s infinite linear;
+  -moz-animation: rotation .7s infinite linear;
+  -o-animation: rotation .7s infinite linear;
+  animation: rotation .7s infinite linear;
+  border-left: 2px solid rgba(0, 0, 0, .25);
+  border-right: 2px solid rgba(0, 0, 0, .25);
+  border-bottom: 2px solid rgba(0, 0, 0, .25);
+  border-top: 2px solid rgba(0, 0, 0, .4);
+  border-radius: 100%;
+  padding-bottom: 0;
+
+  &.spin {
+    height: rem-calc(44);
+    width: rem-calc(44);
+    border-left: 6px solid $link-color;
+    border-right: 6px solid $link-color;
+    border-bottom: 6px solid $link-color;
+    border-top: 6px solid lighten($link-color, 20%);
+  }
+
+  &.small {
+    height: rem-calc(11);
+    width: rem-calc(11);
+  }
+
+  &.tiny {
+    height: rem-calc(9);
+    width: rem-calc(9);
+  }
+
+  &.large {
+    height: rem-calc(15);
+    width: rem-calc(15);
+  }
+
+  &.load-file {
+    height: rem-calc(24);
+    width: rem-calc(24);
+    border-left: 4px solid rgba(0, 0, 0, .25);
+    border-right: 4px solid rgba(0, 0, 0, .25);
+    border-bottom: 4px solid rgba(0, 0, 0, .25);
+    border-top: 4px solid rgba(0, 0, 0, .4);
+  }
+}
+
+.key .spinner, .confirm .spinner {
+  border-left: 2px solid rgba(255, 255, 255, .35);
+  border-right: 2px solid rgba(255, 255, 255, .35);
+  border-bottom: 2px solid rgba(255, 255, 255, .35);
+  border-top: 2px solid rgba(255, 255, 255, .85);
+}
+
+//these styles (along with some javascript) allow us to replace the text
+//with a spinner while maintaining the button width
+
+.button,
+.button.key,
+.button.confirm {
+  &.spinning {
+    color: rgba(0, 0, 0, 0);
+    &:hover, &:focus {
+      color: rgba(0, 0, 0, 0);
+    }
+    .spinnerContainer {
+      display: inline;
+    }
+  }
+  .spinnerContainer {
+    display: none;
+    position: absolute;
+    left: 50%;
+    .spinner {
+      position: relative;
+      left: -50%;
+    }
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+// ACTION BUTTON GROUPS
+
+.action-button-group {
+	background: #f6f6f6;
+	border: solid #d7d7d7 1px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	float: left;
+	overflow: hidden;
+
+	button {
+		border: none;
+		border-right: solid #d7d7d7 1px;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		float: left;
+
+		&:last-child {
+			border-right: none;
+		}
+	}
+}
+
+// TOGGLE BUTTONS
+
+.switch input[type="checkbox"] {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	& + label {
+		-webkit-border-radius: 16px;
+		border-radius: 16px;
+		margin-left: 0;
+	}
+
+	& + label::before {
+		display: none;
+	}
+
+	& + label::after {
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+	}
+}
+
+
+

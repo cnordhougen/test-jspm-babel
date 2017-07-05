@@ -1,0 +1,135 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin: 0;
+}
+
+.microsite nav{
+width: 100%;
+margin: auto;
+position: relative;
+	/*padding: 20px 0px 20px 0px;
+	width:100%;
+	position:fixed;
+	background-color:rgba(255, 255, 255, .95);
+	z-index:300;*/
+}
+
+.microsite nav a {
+	color: #6B777B;
+	text-transform: uppercase;
+}
+
+.microsite nav a:hover {
+  color: #EE2D24;
+}
+
+.side-nav-wrap{
+	width: 100%;
+	position: absolute;
+	left:0px;
+	margin: 15% 0 0 30px;
+	z-index: 99;
+}
+
+.side-nav-fixed{
+	position: fixed;
+}
+
+.side-nav-text{
+display: block;
+margin: 10px 0px;
+}
+
+.side-nav-text span{
+display: none;
+}
+
+.side-nav-text:hover span{
+background: #1e2426;
+display: inline-block;
+padding: 0px 10px 0px 30px;
+color: #fff;
+-moz-border-radius: 15px;
+-webkit-border-radius: 15px;
+border-radius: 15px;
+box-shadow: 1px 1px 2px rgba(51, 51, 51, .3);
+margin-left: -15px;
+z-index: 0;
+}
+
+.side-nav-btn {
+display: inline-block;
+-moz-border-radius: 100%;
+-webkit-border-radius: 100%;
+border-radius: 100%;
+/*border: 2px solid #1e2426;*/
+width: 15px;
+height: 15px;
+background: #ccc;
+cursor: pointer;
+-webkit-transition: width 0.05s ease-out, height 0.05s ease-out, margin 0.05s ease-out, background 0.05s ease-out;
+-moz-transition: width 0.05s ease-out, height 0.05s ease-out, margin 0.05s ease-out, background 0.05s ease-out;
+transition: width 0.05s ease-out, height 0.05s ease-out, margin 0.05s ease-out, background 0.05s ease-out;
+z-index: 1;
+
+}
+
+.side-nav-btn:hover{
+	background: #1e2426;
+	z-index: 9999;
+}
+
+.welcome{
+padding-top: 70px;
+}
+
+.welcome h5{
+	font-size: 44px;
+	font-weight: 300;
+	text-transform: none;
+	color: #1e2426;
+	margin-bottom: 40px;
+	line-height: 0px;
+}
+
+.micro-quote span{
+	font-weight: 300;
+	font-size: 36px;
+	color: #999;
+	line-height: 40px;
+}
+
+#intro{
+	/*background: #f6f6f6 /url(../assets/images/bg-stadium.jpg) 50% 0 no-repeat fixed;*/
+	background-color: #f6f6f6;
+	min-height: 600px;
+}
+
+
+#second{
+	/*background:url(images/secondBG.jpg) 50% 0 no-repeat fixed;*/
+	background-color: #fff;
+	min-height: 600px;
+}
+
+
+#third{
+	/*background:url(images/thirdBG.jpg) 50% 0 no-repeat fixed;*/
+	min-height: 600px;
+	background-color: #F6F6F6;
+}
+
+#fourth{
+	/*background:url(images/thirdBG.jpg) 50% 0 no-repeat fixed;*/
+	background-color: #fff;
+	min-height: 600px;
+}
+
+
+#fifth{
+	/*background:url(images/thirdBG.jpg) 50% 0 no-repeat fixed;*/
+	background-color: #F6F6F6;
+	min-height: 600px;
+}
+

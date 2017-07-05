@@ -1,0 +1,6 @@
+{
+    "env": {
+        "browser": true
+    },
+    "extends": "./node_modules/coding-style/.eslintrc"
+}

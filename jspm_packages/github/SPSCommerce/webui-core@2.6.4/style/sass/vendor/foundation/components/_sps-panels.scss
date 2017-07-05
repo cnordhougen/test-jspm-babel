@@ -1,0 +1,94 @@
+
+
+.panel {
+  @extend .panel;
+  border-color: $panel-border-color;
+  border-radius: $global-radius;
+  -webkit-border-radius: $global-radius;
+  -moz-border-radius: $global-radius;
+  padding: 20px;
+  background-clip: padding-box;
+  
+  &.cap {
+    border-bottom: 1px solid lighten($light-grey, 20%);
+    color: $slate-grey;
+    text-transform: uppercase;
+    font-size: rem-calc(12);
+    padding: rem-calc(12) rem-calc(20);
+    margin-left: rem-calc(-20);
+    margin-right: rem-calc(-20);
+    margin-top: rem-calc(-20);
+  }
+  
+  &.toolbar {
+    padding: 8px;
+    height: rem-calc(46);
+    margin-bottom: rem-calc(10);
+    vertical-align: middle;
+    
+    & input[type="text"] {
+      height: 28px;
+      margin: 0;
+      display: inline;
+    }
+    
+    & a.button.dropdown {
+      //height: 28px;
+      margin-left: rem-calc(10);
+      padding: 6px 30px 6px 10px;
+    }
+    
+    &.button, td.actions .button {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+  }
+
+  &.condensed {
+    padding: 0;
+    
+    & tr:last-child td {
+      border-bottom: 0;
+    }
+  }
+  
+  &.titlebar {
+    margin-bottom: 0;
+    border-bottom: 0;
+    border-radius: $global-radius $global-radius 0px 0px;
+    -webkit-border-radius: $global-radius $global-radius 0px 0px;
+    -moz-border-radius: $global-radius $global-radius 0px 0px;
+    padding: 10px;
+  }
+  
+  &.titlebar aside {
+    color: $slate-grey;
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+    font-weight: $semibold;
+    text-indent: rem-calc(5);
+  }
+  
+  &.toolbar aside {
+    color: $slate-grey;
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+    font-weight: $semibold;
+    text-indent: rem-calc(5);
+    margin-top: rem-calc(5);
+  }
+}
+
+.panel.titlebar + .panel {
+  border-radius: 0px 0px $global-radius $global-radius;
+  -webkit-border-radius: 0px 0px $global-radius $global-radius;
+  -moz-border-radius: 0px 0px $global-radius $global-radius;
+}
+
+.panel.toolbar + .panel th:first-child, .panel.toolbar + .panel th:last-child {
+  border-radius: 2px; 
+}
+
+.panel.titlebar + .panel th:first-child, .panel.titlebar + .panel th:last-child {
+  border-radius: 0px; 
+}

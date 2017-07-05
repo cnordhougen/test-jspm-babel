@@ -1,0 +1,20 @@
+<aside class="sidebar-module" ng-class="{'left-off-canvas-menu': vm.isMobile,'sidebar-wrapper':!vm.isMobile}">
+    <nav>
+        <ul class="sidebar-nav menu-links" ng-if="!vm.isMobile">
+            <li ng-if="vm.title" class="sidebar-title"><span class="nav-icon" ng-class="vm.title.iconClass"></span> <span class="titlelabel">{{vm.title.displayName}}</span> </li>
+            <li ng-repeat="navItem in vm.navObj">
+                <a ui-sref="{{ navItem.routingState || 'no-op' }}" ui-sref-active="current" ui-sref-opts="{ reload: {{ !!navItem.reloadState }} }">
+                    <span class="nav-icon" ng-class="navItem.iconClass"></span><span class="navlabel">{{ navItem.displayName }}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="off-canvas-list detached" ng-if="vm.isMobile">
+        <li ng-if="vm.title" class="sidebar-title"><span class="nav-icon" ng-class="vm.title.iconClass"></span> <span class="titlelabel">{{vm.title.displayName}}</span> </li>
+        <li ng-repeat="navItem in vm.navObj">
+            <a ui-sref="{{ navItem.routingState || 'no-op' }}" ui-sref-active="current" ui-sref-opts="{ reload: {{ !!navItem.reloadState }} }">
+                <span class="nav-icon" ng-class="navItem.iconClass"></span><span class="navlabel">{{ navItem.displayName }}</span>
+            </a>
+        </li>
+    </ul>
+</aside>

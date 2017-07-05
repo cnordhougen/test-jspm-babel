@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageNav Example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./pagination-footer.example').then(function () {
+            angular.bootstrap(document, ['PaginationFooterExample']);
+        });
+    </script>
+</head>
+<body ng-controller="PaginationFooterExampleCtrl as ctrl">
+
+<spsui-application mode="centered">
+    <spsui-viewport>
+            <ui-view></ui-view>
+    </spsui-viewport>
+</spsui-application>
+</body>
+</html>

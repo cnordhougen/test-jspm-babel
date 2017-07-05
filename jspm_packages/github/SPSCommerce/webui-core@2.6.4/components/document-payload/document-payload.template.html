@@ -1,0 +1,21 @@
+<div class="document-info large-16 small-16" ng-if="ctrl.document && ctrl.document.filename">
+  <i class="fa fa-file fa-2x"></i>
+  <div>
+    <div class="document-filename">{{ctrl.document.filename}}</div>
+    <div class="document-description" ng-if="ctrl.document.description">{{ctrl.document.description}}</div>
+  </div>
+</div>
+<div class="panel titlebar document-header" ng-if="ctrl.document && ctrl.document.payload">
+  <div class="right" ng-if="ctrl.document.url">
+    <a class="button no-border" href="{{ctrl.document.url}}">
+      <i class="fa fa-lg fa-cloud-download"></i>
+    </a>
+  </div>
+  <span class="document-lines">{{ctrl.lines.length}} line{{ctrl.lines.length > 1 ? 's' : ''}}</span>
+  <span>{{ctrl.document.payload.length}} bytes</span>
+</div>
+<div class="panel condensed document-payload" ng-if="ctrl.document && ctrl.document.payload">
+  <ol class="doc-contents">
+    <li ng-repeat="line in ctrl.lines">{{line || '&nbsp;'}}</li>
+  </ol>
+</div>

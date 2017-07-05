@@ -1,0 +1,31 @@
+
+/// We use this to add box-sizing across browser prefixes
+@mixin box-sizing($type:border-box) {
+  -webkit-box-sizing: $type; // Android < 2.3, iOS < 4
+     -moz-box-sizing: $type;
+          box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
+}
+/// support for custom breakpoints
+@mixin phone {
+    @media only screen and (min-width: #{$phone-width}) and (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (min-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media only screen and (min-width: #{$laptop-width}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: #{$desktop-width}) {
+        @content;
+    }
+}

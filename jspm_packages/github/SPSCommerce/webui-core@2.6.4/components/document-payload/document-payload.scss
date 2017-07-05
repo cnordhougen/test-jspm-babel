@@ -1,0 +1,84 @@
+@import "jspm:webui-core/style/sass/settings";
+
+spsui-document-payload {
+    .document-info {
+        margin-bottom: 1rem;
+
+        & > i {
+            color: $brand-blue;
+            vertical-align: middle;
+            margin-right: 0.25rem;
+        }
+
+        & > div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .document-filename {
+            color: $brand-blue;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .document-description {
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: -0.1rem;
+            color: $medium-grey;
+        }
+    }
+
+    .panel.titlebar.document-header {
+        background: #f0fafd;
+        border: 1px solid #80D4F2;
+        font-size: .75em;
+        color: #0097cc;
+
+        .document-lines {
+            padding: 0 1.5em 0 0;
+            margin-right: 1.5em;
+            border-right: 1px solid #80D4F2;
+        }
+    }
+
+    .panel.condensed.document-payload {
+        word-break: break-all;
+        border-top: 0;
+        background: #F6F6F6;
+
+        ol {
+            list-style-type: none;
+            font-family: monospace, serif;
+            font-size: .75em;
+            margin-left: 2.5rem;
+            padding: 1rem 0;
+            counter-reset: li-counter;
+            border-left: 1px solid #d8dbdc;
+            background: #fff;
+
+            li {
+                padding: 0 1rem;
+
+                &:hover {
+                    background: #f0fafd;
+
+                    &:before {
+                        color: #889194;
+                        font-weight: 600;
+                    }
+                }
+
+                &:before {
+                    position: absolute;
+                    margin-left: -3.2rem;
+                    width: 2rem;
+                    text-align: center;
+                    color: #B0B6B8;
+                    content: counter(li-counter);
+                    counter-increment: li-counter;
+                }
+            }
+        }
+    }
+}

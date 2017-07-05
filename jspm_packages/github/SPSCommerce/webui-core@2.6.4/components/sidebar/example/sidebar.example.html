@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sidebar Example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style>body {visibility: hidden;}</style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./sidebar.example').then(function () {
+            angular.bootstrap(document, ['SidebarExample']);
+        });
+    </script>
+</head>
+<body ng-controller="SidebarExampleCtrl as ctrl">
+
+<spsui-application>
+    <spsui-sidebar config-obj="ctrl.configObj"></spsui-sidebar>
+    <spsui-page-title
+        back-click="ctrl.titleService.backFunction()"
+        page-title="ctrl.titleService.pageTitle"
+        show-back="ctrl.titleService.showBack"
+        menu-click="ctrl.toggleNav()">
+
+    </spsui-page-title>
+
+    <spsui-viewport>
+            <ui-view></ui-view>
+    </spsui-viewport>
+</spsui-application>
+
+</body>
+</html>

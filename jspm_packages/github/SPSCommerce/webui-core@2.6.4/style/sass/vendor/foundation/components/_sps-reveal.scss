@@ -1,0 +1,116 @@
+//patch default foundation reveal-modal
+.#{$reveal-modal-class} {
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: $reveal-box-shadow;
+  outline: none;
+  top: $reveal-position-top;
+  .#{$close-reveal-modal-class} {
+    //Remove link bottom border
+    border-bottom: 0;
+    color: rgba(0,0,0,.25);
+    &:hover {
+      color: rgba(0,0,0,.5);
+    }
+  }
+  //Forcing user to always use header element to give it a title
+  & > header:first-child {
+    font-weight: $semibold;
+    font-size: rem-calc(14);
+    color: darken($medium-grey, 20%);
+    margin: rem-calc(-30) rem-calc(-30) rem-calc(30) rem-calc(-30);
+    padding: rem-calc(12) rem-calc(15);
+    border-radius: 0;
+    border-bottom: 1px solid darken($pale-grey,5%);
+  }
+  
+  &.warning .modal-title {
+    background: $yellow;
+    color: $white;
+    border-bottom: 0;
+  }
+  
+  &.protip .modal-title {
+    background: $pale-yellow;
+    color: rgba(0,0,0,.75);
+    border-bottom: 1px solid darken($pale-yellow,10%);
+  }
+
+  &.info .modal-title {
+    background: $deep-blue;
+    color: $white;
+    border-bottom: 0;
+  }
+  
+  &.success .modal-title {
+    background: $green;
+    color: $white;
+    border-bottom: 0;
+  }
+  
+  &.delete .modal-title {
+    background: $error-color;
+    color: $white;
+    border-bottom: 0;
+  }
+  
+  &.delete .msg {
+    color: $error-color;
+  }
+}
+
+
+
+ul.form-actions {
+  background: $pale-grey;
+  text-align: right;
+  margin: rem-calc(30) rem-calc(-30) rem-calc(-30) rem-calc(-30);
+  padding: rem-calc(10) rem-calc(10);
+  & li {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: rem-calc(5);
+  }
+  
+  & .msg {
+    color: $medium-grey;
+    float: left;
+    font-size: rem-calc(12);
+    margin-top: rem-calc(3);
+  }
+}
+
+// Made reveal fullscreen on small devices
+@media #{$small-only} {
+  .#{$reveal-modal-class} {
+    margin: 0 10%;
+    max-width: 80%;
+    padding: rem-calc(20);
+    //Need to change header margin after we have changed padding
+    & > header:first-child {
+      margin: rem-calc(-20) rem-calc(-20) rem-calc(20) rem-calc(-20);
+    }
+  }
+}
+
+@media #{$small} {
+  //  Changed reveal width for every reveal type
+  .#{$reveal-modal-class} {
+    &.tiny {
+      @include reveal-modal-base(false, 25%);
+    }
+    &.small {
+      @include reveal-modal-base(false, 50%);
+    }
+    &.medium {
+      @include reveal-modal-base(false, 65%);
+    }
+    &.large {
+      @include reveal-modal-base(false, 75%);
+    }
+    &.xlarge {
+      @include reveal-modal-base(false, 95%);
+    }
+  }
+}
+

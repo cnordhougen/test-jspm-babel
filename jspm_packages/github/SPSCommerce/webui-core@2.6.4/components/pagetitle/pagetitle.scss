@@ -1,0 +1,85 @@
+@import "settings";
+
+
+
+
+spsui-page-title {
+    display: block;
+    .page-title {
+        padding: 0.85rem 4.25rem;
+        font-size: 1.5rem;
+        background-color: $white;
+        height:60px;
+        @include phone {
+            font-size: 1rem;
+            height: 45px;
+            padding: 0.65rem 4rem;
+        }
+
+        .title-back-button {
+            border:0 none;
+            color: #00aae5;
+            padding-right: .3rem;
+
+            &:hover{
+                color:#1b84ac;
+            }
+        }
+    }
+    .left-off-canvas-toggle, .left-push-canvas {
+        color: #d7dadb;
+
+        width: 2.25rem;
+        height: 2.5rem;
+        border: 0 none;
+        border-right: 1px solid #d7dadb;
+
+        position: absolute;
+        top: .65rem;
+        left: 1rem;
+
+        &:after {
+            content: "\f0c9";
+            position: absolute;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 1.25rem;
+            font-family: FontAwesome;
+            font-weight: 400;
+            font-style: inherit;
+
+            left: 0;
+            top: 45%;
+            margin-top:-0.625rem;
+        }
+
+        &:hover{
+            color:#535e62;
+        }
+
+        @include phone {
+            height: 1.6rem;
+
+            &:after {
+                top: 35%;
+            }
+        }
+    }
+
+    .left-off-canvas-toggle {
+        display: none;
+    }
+
+    .left-push-canvas {
+        display: inline-block;
+    }
+
+}
+
+.breakpoint-triggered .left-off-canvas-toggle {
+    display: inline-block;
+}
+
+.breakpoint-triggered .left-push-canvas {
+    display: none;
+}

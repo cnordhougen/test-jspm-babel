@@ -1,0 +1,168 @@
+.performance-tiles {
+	padding: 0;
+	border: none;
+	
+	.tiles {
+		margin: 0;
+		
+		li {
+			height: 155px;
+			margin: 0;
+			text-align: center;
+			transition: all 0.25s ease;
+			width: 20%;
+			
+			&:hover, &:active {
+								
+				.tile-metric, .tile-metric .fa, .tile-name {
+					color: #fff !important;
+				}
+			}
+			
+			&.brandblue {
+				.tile-top {
+					background: #00AAE5;
+				}
+				.tile .tile-metric .fa {
+					color: #00AAE5;
+				}
+				
+				&:hover, &:active {
+					background: #00AAE5;
+					
+					.tile {
+						border-color: #00AAE5;
+					}
+				}
+			}
+			
+			&.green {
+				.tile-top {
+					background: #32BE6F;
+				}
+				.tile .tile-metric .fa {
+					color: #32BE6F;
+				}
+				
+				&:hover, &:active {
+					background: #32BE6F;
+					
+					.tile {
+						border-color: #32BE6F;
+					}
+				}
+			}
+
+			&.plum {
+				.tile-top {
+					background: #9B4B87;
+				}
+				.tile .tile-metric .fa {
+					color: #9B4B87;
+				}
+				
+				&:hover, &:active {
+					background: #9B4B87;
+					
+					.tile {
+						border-color: #9B4B87;
+					}
+				}
+			}			
+
+			&.red {
+				.tile-top {
+					background: #FF3246;
+				}
+				.tile .tile-metric .fa {
+					color: #FF3246;
+				}
+				
+				&:hover, &:active {
+					background: #FF3246;
+					
+					.tile {
+						border-color: #FF3246;
+					}
+				}
+			}
+			
+			&:first-child {
+				.tile {
+					-webkit-border-radius: 0 0 0 3px;
+					border-radius: 0 0 0 3px;
+				}
+				.tile-top {
+					-webkit-border-radius: 3px 0 0 0;
+					border-radius: 3px 0 0 0;					
+				}
+				
+				&:hover {
+					-webkit-border-radius: 3px 0 0 3px;
+					border-radius: 3px 0 0 3px;					
+				}
+			}
+			
+			&:last-child {
+				.tile {
+					border-right: solid 1px #D8DBDC;
+					-webkit-border-radius: 0 0 3px 0;
+					border-radius: 0 0 3px 0;
+				}
+				.tile-top {
+					-webkit-border-radius: 0 3px 0 0;
+					border-radius: 0 3px 0 0;					
+				}	
+				
+				&:hover {
+					-webkit-border-radius: 0 3px 3px 0;
+					border-radius: 0 3px 3px 0;					
+				}			
+			}
+			
+			.tile {
+				height: 145px;
+				overflow: hidden;
+				border-left: solid 1px #D8DBDC;
+				border-bottom: solid 1px #D8DBDC; 
+				
+				.tile-metric {
+					color: #000;
+					font-size: rem-calc(54);
+					font-weight: 100;
+					height: 54px;
+					line-height: rem-calc(54);
+					margin-top: 33px;
+					
+					.unit { font-size: rem-calc(36); }
+					
+					.fa {
+						font-size: rem-calc(44);
+						height: 54px;
+						line-height: rem-calc(54);
+						margin-right: 10px;
+					}
+				}
+				
+				.tile-name {
+					color: #B0B6B8;
+					font-weight: 600;
+					line-height: 18px;
+					margin-top: 6px;
+					text-transform: uppercase;
+				}
+			}
+			
+			.tile-top {
+				height: 10px;
+			}				
+			
+			&.more {
+				.more-tiles {
+					display: none;
+				}
+				
+			}
+		}
+	}
+}

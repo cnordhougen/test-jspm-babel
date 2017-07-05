@@ -1,0 +1,1 @@
+module.exports = require("github:yalabot/angular-foundation-bower@0.8.0/mm-foundation-tpls.js");

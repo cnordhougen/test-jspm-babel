@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageNav Example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <style type="text/css">
+        body {visibility: hidden;}
+    </style>
+    <script src="/jspm_packages/system.js"></script>
+    <script>System.config({baseURL: '/'});</script>
+    <script src="/config.js"></script>
+    <script>
+        System.import('./page-nav.example').then(function () {
+            angular.bootstrap(document, ['PageNavExample']);
+        });
+    </script>
+</head>
+<body ng-controller="PageNavExampleCtrl as ctrl">
+
+<spsui-application mode="centered">
+
+    <spsui-page-nav items="ctrl.navItems"
+                    title="Sample Application"
+                    logo-image-url="images/app-icon.svg"
+                    title-state="overview"></spsui-page-nav>
+
+    <spsui-viewport>
+        <ui-view></ui-view>
+    </spsui-viewport>
+
+</spsui-application>
+
+</body>
+</html>

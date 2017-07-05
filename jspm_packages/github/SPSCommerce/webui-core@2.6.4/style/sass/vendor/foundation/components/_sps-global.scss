@@ -1,0 +1,98 @@
+body {
+  line-height: 1.4rem;
+  font-weight: $book;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+::selection {
+  background: $brand-blue;
+  color: $white;
+}
+
+::-moz-selection {
+  background: $brand-blue;
+  color: $white;
+}
+
+@mixin transparency($alpha) {
+  opacity: $alpha;
+}
+
+.alpha-10 {
+  @include transparency(.1);
+}
+
+.alpha-20 {
+  @include transparency(.2);
+}
+
+.alpha-30 {
+  @include transparency(.3);
+}
+
+.alpha-40 {
+  @include transparency(.4);
+}
+
+.alpha-50 {
+  @include transparency(.5);
+}
+
+.alpha-60 {
+  @include transparency(.6);
+}
+
+.alpha-70 {
+  @include transparency(.7);
+}
+
+.alpha-80 {
+  @include transparency(.8);
+}
+
+.alpha-90 {
+  @include transparency(.9);
+}
+
+.alpha {
+  @include transparency(1);
+}
+
+.txt-right { text-align: right; }
+.txt-center { text-align: center; }
+.txt-left { text-align: left; }
+.txt-justify { text-align: justify; }
+
+//View Switching Toggle Icons
+
+ul.toggle-icon {
+  margin: 7px 5px 0 5px;
+  float: right;
+
+  li {
+    display: inline-block;
+    margin-left: 15px;
+    a {
+      display: block;
+      border: 0;
+      color: $light-grey;
+      &:hover {
+        color: $slate-grey;
+      }
+    }
+    &.active a {
+      color: $medium-grey;
+      &:hover {
+        color: $slate-grey;
+      }
+    }
+  }
+}
+
+
+
+
+
