@@ -1,9 +1,8 @@
 /* eslint-env node */
-export default gulp => gulp.task(
-    'dist',
-    'Remove unnecessary files for distribution',
-    () => gulp.runSequence(
-        () => require('del')([
+export default gulp => {
+    gulp.task('dist:del', () => {
+        const del = require('del');
+        return del ([
             gulp.files.dirs.gulp,
             gulp.files.dirs.test,
             gulp.files.dot,
@@ -12,9 +11,19 @@ export default gulp => gulp.task(
             gulp.files.karmaConfig,
             gulp.files.sass,
             gulp.files.specs,
-        ]),
-        () => gulp.src('.gitignore.dist')
-                  .pipe(require('rename')('.gitignore'))
-                  .pipe(gulp.dest('.'))
-    }
-);
+        ]);
+    });
+
+    gulp.task('dist:rename', () => {
+        const rename = require('gulp-rename');
+        return gulp.src('.gitignore.dist')
+                   .pipe(rename('.gitignore'))
+                   .pipe(gulp.dest('.'));
+    });
+
+    return gulp.task(
+        'dist',
+        'Remove unnecessary files for distribution',
+        () => gulp.runSequence('dist:del', 'dist:rename')
+    );
+};
