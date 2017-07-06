@@ -5,6 +5,7 @@ const dirs = {
     localization: 'lang',
     node:         'node_modules',
     src:          'src',
+    test:         'test',
 };
 
 export default {
@@ -13,7 +14,7 @@ export default {
     coverage:    `${dirs.coverage}/**/*.html`,
     css:         `${dirs.src}/**/*.css`,
     cssMaps:     `${dirs.src}/**/*.css.map`,
-    dot:         '.!(git)',
+    dot:         '.!(git|*dist)',
     es6:         '**/*.es6',
     gulpfile:    'gulpfile.babel.js',
     js:          `${dirs.src}/**/!(*spec).js`,
